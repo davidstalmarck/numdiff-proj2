@@ -1,12 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-N = 499
+N = 100
 L = 1
 dx = L/(N+1)
 const = 1/dx**2
 #c = np.array([-2, 1] + [0 for i in range(N-2)])    # First column of T # First row of T
 
 T = [[0 for i in range (N)] for i in range(N)]
+
 
 for i in range(N):
     T[i][i] = -2*const
@@ -45,14 +46,13 @@ plt.figure(figsize = (12, 8))
 
 for i in range(3):
     eigenvector = sorted_vectors[-1-i]
-    print(sorted_val)
     eigenvector = list(eigenvector)
     eigenvector.insert(alpha,0)
     yn = 2*beta+eigenvector[-2]
     eigenvector.append(yn)
     eigenvector = [x*yn for x in eigenvector]
-    
     plt.plot([i*dx for i in range(len(eigenvector))], eigenvector, label=dummy[i])
+    
 
 plt.title('Eigenfunctions of d^2/dx^2')
 #plt.xlabel('t')
